@@ -183,7 +183,7 @@ color: white;
     function getlist(p=1){
     $.ajax({
             type:"GET",
-            url:"http://81.68.107.245/api/songs",
+            url:"https://mp3.zzgoodqc.cn/api/songs",
             dataType:"json",
             data:{page:p,                
                 pageSize:10
@@ -258,7 +258,7 @@ $('#jsList tbody').on('click','.exam',function(){
  function chakan (id){
     $.ajax({
             type:"GET",
-            url:"http://81.68.107.245/api/songs/"+id,
+            url:"https://mp3.zzgoodqc.cn/api/songs/"+id,
             dataType:"json",    
             success:function(data){
                 if(data.code==200){   
@@ -295,7 +295,7 @@ $('#clickAdd').click(function(){
   if($('#hxList h2').text()=='添加'){
     $.ajax({
             type:"post",
-            url:"http://81.68.107.245/api/songs",
+            url:"https://mp3.zzgoodqc.cn/api/songs",
             dataType:"json",   
             headers:{"Content-Type":"application/json"},
             data:JSON.stringify({
@@ -316,7 +316,7 @@ $('#clickAdd').click(function(){
   }else if($('#hxList h2').text()=='修改'){
     $.ajax({
             type:"put",
-            url:"http://81.68.107.245/api/songs/"+ID,
+            url:"https://mp3.zzgoodqc.cn/api/songs/"+ID,
             dataType:"json",  
             headers:{"Content-Type":"application/json"},
             data:JSON.stringify({
@@ -350,7 +350,7 @@ $('#seek').click(function(){
     if(id1){
  $.ajax({
             type:"GET",
-            url:"http://81.68.107.245/api/songs/"+`${id1}`,
+            url:"https://mp3.zzgoodqc.cn/api/songs/"+`${id1}`,
             dataType:"json",    
             success:function(data){
                 if(data.code==200){   
@@ -388,7 +388,7 @@ function deldata(arr){
   arr.forEach((item)=>{
      $.ajax({
             type:"delete",
-            url:" http://81.68.107.245/api/songs/"+`${item}`,
+            url:" https://mp3.zzgoodqc.cn/api/songs/"+`${item}`,
             dataType:"json",
             success:function(data){
                 if(data.code==200){    
