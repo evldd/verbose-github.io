@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="layui.css">
+    <script src="layui.js"></script>
+    <style>
+      #tbody{
+        width: 1200px;
+        margin: 10px auto;
+      }
+      td{
+    border: 1px lightgray solid; 
+    text-align: center;
+    height: 40px;
+    padding: 5px 20px;
+}
+nav{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 5px;
+    background-color:  rgb(235, 235, 235,0.5);
+    text-align: right;
+}
+#addDel{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 5px;
+    background-color:  rgb(235, 235, 235,0.5);
+    margin: 20px 0;
+}
+#addDel button{
+    margin-left: 15px
+}
+#background{
+    width: 50px;
+    height: 25px;
+    background-color:  rgb(235, 235, 235,0.5);
+    border-radius: 7px;
+    margin: 0 20px;
+}
+ button{
+border-radius: 5px;
+border: none;
+background-color: rgb(107, 172, 10);
+padding: 5px 7px;
+color: white;
+ }
+ #listhead td{
+    background-color: rgba(220, 220, 220, 0.5);
+ }
+ #hxList{
+    height: 300px;
+    width: 480px;
+    line-height: 45px;
+    margin: 20px auto;
+    background-color: rgb(235, 235, 235);
+    border-radius: 8px;
+    padding: 20px 20px;
+     text-align: center;
+     position: absolute;
+     left: 35%;
+     top:30%;
+     color: black;
+}
+#hxList span{
+    width: 100px;
+    height: 45px;
+    display: inline-block;
+    margin: 0 10px ;
+}
+#hxList input{
+    width: 200px;
+    height: 20px;
+    display: inline-block;
+    border: 1px lightgrey solid;
+    border-radius: 5px;
+    text-indent: 10px;
+}
+#hxList button{
+    margin: 0 20px;
+}
+#seekipt{
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(140, 252, 190, 0.4);
+}
+#fpage{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background-color:rgba(220, 220, 220, 0.5) ;
+    border-radius: 5px;
+    margin-top: 2px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+
+    <div id="tbody">
+        <nav>  
+            <select name="" id="background">
+                <option value="开灯"> 开灯</option>
+                <option value="关灯"> 关灯</option>
+            </select>
+        </nav>
+        <div id="addDel">
+            <input type="text" id="seekipt">
+           <button id="seek">查询</button>
+           <button id="addItem">添加</button> 
+           <button id="delItem">删除</button>
+        </div>
+        <!-- 歌曲列表 -->
+        <table id="jsList" >
+            <thead>
+                <tr id="listhead">
+                    <td> <input type="checkbox" id="selectAll"> </td>
+                     <td>id</td>
+                     <td>封面</td>
+                    <td style="width: 80px;">专辑名称</td>
+                    <td style="width: 80px;">歌曲名称</td>
+                     <td style="width: 80px;">艺术家</td>
+                    <td>创建日期</td>
+                    <td>更新日期</td>
+                    <td>类型</td>
+                    <td>年代</td>
+                    <td style="width: 120px;">操作</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>  
+        <div id="fpage"></div>
+    </div>    
+  <div id="hxList">
+      <h2></h2>
+                <div >
+                   <span>歌曲名称 ：</span><input type="text">  <br>
+                   <span>艺术家 ：</span><input type="text">    <br>
+                   <span>专辑名称 ：</span><input type="text">       <br>
+                   <span>年代 ：</span><input type="text">     <br>
+                   <span>类型 ：</span> <input type="text">     <br>
+                    <button id="clickAdd" >确认</button>
+                    <button id="noclickAdd" >取消</button>
+                </div>
+        </div>
+    <script>
+        
+        let ID , idx  ;
+        ;(function (){
+         if(localStorage.getItem('background')){
+     $('#background').val(JSON.parse(localStorage.getItem('background')))
+          let back = $('#background').val()
+                   backgroundChang(back)             
+     }
+             getlist()
+            $('#hxList').hide()
+        })()
+  //背景色改变   
+    $('#background').change(function (){
+        backgroundChang($(this).val())
+    }) 
+    function backgroundChang(a){
+        if(a=='开灯'){
+        $('body').css('background','white')
+        $('body').css('color','black')
+       }else{
+        $('body').css('background','black')
+        $('body').css('color','white')
+       }  
+ localStorage.setItem('background', JSON.stringify(a))
+    }
+  //获取歌曲列表
+    function getlist(p=1){
+    $.ajax({
+            type:"GET",
+            url:"http://81.68.107.245/api/songs",
+            dataType:"json",
+            data:{page:p,                
+                pageSize:10
+            },     
+            success:function(data){
+                if(data.code==200){   
+                    console.log(data); 
+                 showList(data,p)          
+                }else{
+                 alert(data.msg)            
+                }
+            }
+        });
+ }
+ //渲染歌曲列表
+  function showList(data,p){
+    let page = Math.ceil(data.count/data.pageSize) 
+        let pagehtml = ''
+         for(let i=0;i<page;i++){
+               if(i+1==p){
+                pagehtml+=`
+            <button style="border-radius: 25px;"> &nbsp${i+1} &nbsp </button>  `
+               }else{
+                 pagehtml+=`
+            <span>${i+1} &nbsp </span>    `
+               }
+         }
+       $('#fpage').html(pagehtml)  
+
+  if(Array.isArray(data.data)){
+     data=data.data
+  }           
+    let html = ''
+     data.forEach((item,index)=>{
+        let cr = item.created_at.replace('T',' ').replace('.000Z','')
+       let up = item.updated_at.replace('T',' ').replace('.000Z','')
+        html+=`
+        <tr>
+            <td><input type="checkbox" value=${item.id}></td>
+            <td>${item.id}</td>
+            <td> <img src=${item.image_url}> </td>
+            <td>${item.album}</td>
+            <td>${item.title}</td>
+            <td>${item.artist}</td>
+            <td>${cr}</td>
+            <td>${up}</td>
+            <td> ${item.genre} </td>
+            <td> ${item.year} </td>
+            <td><button class='exam' data-id='${item.id}' data-idx='${index}'>查看</button>
+                <button class='changItem' data-id='${item.id}' data-idx='${index}'>修改</button>
+        </tr>
+         `
+       }) 
+      $('#jsList tbody').html(html)
+
+ } 
+ //点击添加
+ $('#addItem').click(function(){
+   $('#hxList').show() 
+   $('#hxList').fadeOut(0)
+    $('#hxList').fadeIn(600)
+    $('#hxList h2').text('添加')
+ })
+ //查看
+$('#jsList tbody').on('click','.exam',function(){
+    $('#hxList').show() 
+   $('#hxList').fadeOut(0)
+    $('#hxList').fadeIn(600)
+    $('#hxList h2').text('查看')
+      chakan ($(this).data('id'))
+ })
+ function chakan (id){
+    $.ajax({
+            type:"GET",
+            url:"http://81.68.107.245/api/songs/"+id,
+            dataType:"json",    
+            success:function(data){
+                if(data.code==200){   
+                    huixian(data.data)
+                }else{
+                 alert(data.msg)            
+                }
+            }
+        });
+ }
+ //回显
+function huixian(data){
+  $('#hxList input').eq(0).val(data.title)
+  $('#hxList input').eq(1).val(data.artist)
+  $('#hxList input').eq(2).val(data.album)
+  $('#hxList input').eq(3).val(data.year)
+  $('#hxList input').eq(4).val(data.genre)
+}
+//修改
+$('#jsList tbody').on('click','.changItem',function(){
+    $('#hxList').show() 
+   $('#hxList').fadeOut(0)
+    $('#hxList').fadeIn(600)
+    $('#hxList h2').text('修改')
+    chakan ($(this).data('id'))
+        ID = $(this).data('id')
+ })
+//确认添加  查看  修改
+$('#clickAdd').click(function(){
+    $('#hxList').hide()
+    $('#hxList').fadeIn(0)
+    $('#hxList').fadeOut(600)
+ let item = $('#hxList input')
+  if($('#hxList h2').text()=='添加'){
+    $.ajax({
+            type:"post",
+            url:"http://81.68.107.245/api/songs",
+            dataType:"json",   
+            headers:{"Content-Type":"application/json"},
+            data:JSON.stringify({
+               title:item.eq(0).val(),
+               artist:item.eq(1).val(),
+               album:item.eq(2).val(),
+               year:item.eq(3).val(),
+               genre:item.eq(4).val()
+            }) , 
+            success:function(data){
+                if(data.code==201){   
+                 getlist()  
+                }else{
+                 alert(data.msg)          
+                }
+            }
+        });
+  }else if($('#hxList h2').text()=='修改'){
+    $.ajax({
+            type:"put",
+            url:"http://81.68.107.245/api/songs/"+ID,
+            dataType:"json",  
+            headers:{"Content-Type":"application/json"},
+            data:JSON.stringify({
+               title:item.eq(0).val(),
+               artist:item.eq(1).val(),
+               album:item.eq(2).val(),
+               year:item.eq(3).val(),
+               genre:item.eq(4).val()
+            }) , 
+            success:function(data){
+                if(data.code==200){   
+               getlist()  
+               console.log(data);      
+                }else{
+                    console.log(data,111);  
+                 alert(data.msg)            
+                }
+            }
+        });
+}
+})
+//取消
+$('#noclickAdd').click(function(){
+    $('#hxList').fadeIn(0)
+    $('#hxList').fadeOut(1000)
+})
+//查询
+$('#seek').click(function(){
+    let id1 = $('#seekipt').val()/1
+    let arr = []
+    if(id1){
+ $.ajax({
+            type:"GET",
+            url:"http://81.68.107.245/api/songs/"+`${id1}`,
+            dataType:"json",    
+            success:function(data){
+                if(data.code==200){   
+            arr.push(data.data)
+               showList(arr)        
+                }else{
+                 alert(data.msg)            
+                }
+            }
+        });
+    }else{
+  getlist()
+    } 
+})
+ //点击删除
+ $('#delItem').click(function(){
+          
+ let arr = []
+  $('td input[type="checkbox"]').each((idx,item)=>{
+      if(item!=0&&$(item).prop('checked')){
+           arr.push($(item).val())    
+      } 
+  })
+  if(!arr[0]){
+  alert('没有选中任何歌曲')
+  }else{
+  let del = confirm('确认删除选中的歌曲吗？')
+    if(del){   
+   deldata(arr)
+    } 
+  }
+ })
+//删除
+function deldata(arr){
+  arr.forEach((item)=>{
+     $.ajax({
+            type:"delete",
+            url:" http://81.68.107.245/api/songs/"+`${item}`,
+            dataType:"json",
+            success:function(data){
+                if(data.code==200){    
+                  getlist() 
+                }else{
+              console.log(data.msg)              
+                }
+            }
+        }); 
+  }) 
+  $('#selectAll').prop('checked','')
+}
+ //全选
+ $('#selectAll').click(function(){
+$('td input[type="checkbox"]').prop('checked',$('#selectAll').prop('checked'))
+ })
+
+ //表格变色
+ let chang =  document.querySelector('tbody')
+chang.addEventListener('mouseover',function(){
+   if(event.target.nodeName=='TD'){
+   event.target.parentNode.style.backgroundColor='rgba(140, 252, 190, 0.4)'
+   }
+}) 
+chang.addEventListener('mouseout',function(){
+   if(event.target.nodeName=='TD'){
+   event.target.parentNode.style.backgroundColor=''
+   }
+}) 
+//点击翻页
+  $('#fpage').on('click','span',function(){
+    getlist($(this).text())
+  })
+    </script>
+</body>
+</html>
