@@ -5,45 +5,332 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="echarts.js"></script>
+    <script src="../ECharts/echarts.js"></script>
+    <link rel="stylesheet" href="layui.css"> 
+    <script src="jquery.js"></script>
+    <style>
+      body{
+        padding: 20px;
+      }
+      #namee{
+        margin: 30px;
+        
+      }
+    </style>
 </head>
-<body>
-仓库测试   
+<body>   
+<div id="namee"> </div> 
+ 
 <div id="main" style="width: 600px;height: 400px;"></div>
+
+<div id="name1"> </div> 
+ 
 <div id="main1" style="width: 600px;height: 400px;"></div>
-<script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-
-    // 指定图表的配置项和数据
-    var option = {
-      title: {
-        text: 'ECharts 入门示例'
-      },
-      tooltip: {},
-      legend: {
-        data: ['销量']
-      },
-      xAxis: {
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-      },
-      yAxis: {},
-      series: [
+<script>
+     let student = [
+    {
+      name:'郭栋彬', result: [{
+                         date:'2023-3-31',
+                            subject:[{
+                              name:'机试',
+                              score:85
+                                       }]},
         {
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
-        }
+          date:'2023-4-7',
+          subject:[
+            {
+              name:'笔试',
+              score:67
+            },{
+              name:'机试',
+              score:99
+            }
+          ]
+        },
+        {
+          date:'2023-4-17',
+          subject:[
+            {
+              name:'机试',
+              score:70
+            }
+          ]
+        },
+        {
+          date:'2023-4-21',
+          subject:[
+          {
+              name:'笔试',
+              score:49
+            },{
+              name:'机试',
+              score:90
+            }
+          ]
+        },
       ]
-    };
+    },
+    {
+      name:'陈静', result: [{
+                         date:'2023-3-31',
+                            subject:[{
+                              name:'机试',
+                              score:60
+                                   }]},
+        {
+          date:'2023-4-7',
+          subject:[
+            {
+              name:'笔试',
+              score:85
+            },{
+              name:'机试',
+              score:35
+            }
+          ]
+        },
+        {
+          date:'2023-4-17',
+          subject:[
+            {
+              name:'机试',
+              score:70
+            }
+          ]
+        },
+        {
+          date:'2023-4-21',
+          subject:[
+          {
+              name:'笔试',
+              score:65
+            },{
+              name:'机试',
+              score:75
+            }
+          ]
+        },
+      ]
+    }, {
+      name:'赵灿龙', result: [{
+                         date:'2023-3-31',
+                            subject:[{
+                              name:'机试',
+                              score:90
+                                   }]},
+        {
+          date:'2023-4-7',
+          subject:[
+            {
+              name:'笔试',
+              score:51
+            },{
+              name:'机试',
+              score:70
+            }
+          ]
+        },
+        {
+          date:'2023-4-17',
+          subject:[
+            {
+              name:'机试',
+              score:65
+            }
+          ]
+        },
+        {
+          date:'2023-4-21',
+          subject:[
+          {
+              name:'笔试',
+              score:29
+            },{
+              name:'机试',
+              score:50
+            }
+          ]
+        },
+      ]
+    }
+   ]
 
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+       showList();
+      function showList(){
+        let html = ''
+    student.forEach((item,index)=>{
+      html+=`
+       <button class="layui-btn" data-idx=${index}>${item.name}</button>
+      `    
+    })
+      $('#namee').html(html)
+      }
+      var studentIndex = 0, myChart, option;
+      initEchats(studentIndex);
+            function initEchats(studentIndex) {
+                myChart = echarts.init(document.getElementById("main"));
+                option = {
+                    title: {
+                        text: `${student[studentIndex].name}的成绩`,
+                    },
+                    legend: {
+                        data: ["机试", "笔试"]
+                    },
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            type: "shadow",
+                        },
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: getXdata(studentIndex),
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: getScore(studentIndex),
+                };
+                myChart.setOption(option)
+            }
+            function getScore(studentIndex) {
+                let jishiD = [],
+                    bishiD = [];
+                let res2 = student[studentIndex].result.map((item, index) => {
+                    return item.subject.filter((item, index) => {
+                        if (item.name == "机试"&&index==0) {
+                            jishiD.push(item.score)
+                            bishiD.push(0)
+                            return jishiD, bishiD
+                        }else if (item.name == "机试"&&index==1) {
+                            jishiD.push(item.score) 
+                            return jishiD
+                        } else if (item.name == "笔试") {
+                            bishiD.push(item.score)
+                            return bishiD
+                        }
+                    })
+                })
+                return [
+                    {
+                        label: {
+                            show: true,
+                            position: "top",
+                        },
+                        data: jishiD,
+                        name: "机试",
+                        type: "bar",
+                    },
+                    {
+                        label: {
+                            show: true,
+                            position: "top",
+                        },
+                        data: bishiD,
+                        name: "笔试",
+                        type: "bar",
+                    },
+                ];
+            }
+            function getXdata(studentIndex) {
+                let res = student[studentIndex].result.map((item, index) => {
+                    return item.date;
+                });
+                return res;
+            }
 
+  $('#namee').on('click','button',function(){
+    initEchats($(this).data('idx'))
+ })  
+     
+  /////////////////////////////////////////////////
+  
+/*   showList1();
+      function showList1(){
+        let html = ''
+    student.forEach((item,index)=>{
+      html+=`
+       <button class="layui-btn" data-idx=${index}>${item.name}</button>
+      `    
+    })
+      $('#name1').html(html)
+      }
+      var studentIndex1 = 0, myChart1, option1;
+      initEchats1(studentIndex1);
+            function initEchats1(studentIndex1) {
+                myChart1 = echarts.init(document.getElementById("main1"));
+                option1 = {
+                    title: {
+                        text: `${student[studentIndex].name}的成绩`,
+                    },
+                    legend: {
+                        data: ["机试", "笔试"]
+                    },
+                    grid: {
+                       left: '3%',
+                       right: '4%',
+                        bottom: '3%',
+                       containLabel: true
+                                           },
+                    toolbox: {
+                      feature: {
+                        saveAsImage: {}
+                           }
+                              },
+                    xAxis: {
+                        type: 'category',
+                        data: getXdata1(studentIndex),
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: getScore1(studentIndex),
+                };
+                myChart1.setOption(option1)
+            }
+            function getScore1(studentIndex1) {
+                let jishiD = [],
+                    bishiD = [];
+                let res2 = student[studentIndex].result.map((item, index) => {
+                    return item.subject.filter((item, index) => {
+                        if (item.name == "机试"&&index==0) {
+                            jishiD.push(item.score)
+                            bishiD.push(0)
+                            return jishiD, bishiD
+                        }else if (item.name == "机试"&&index==1) {
+                            jishiD.push(item.score) 
+                            return jishiD
+                        } else if (item.name == "笔试") {
+                            bishiD.push(item.score)
+                            return bishiD
+                        }
+                    })
+                })
+                return [
+                    {
+                       name: "机试",
+                       type: "line",
+                       stack: 'Total',
+                        data: jishiD,        
+                    },
+                    {
+                      name: "笔试",
+                       type: "line",
+                       stack: 'Total',
+                        data: jishiD,   
+                    },
+                ];
+            }
+            function getXdata1(studentIndex) {
+                let res = student[studentIndex].result.map((item, index) => {
+                    return item.date;
+                });
+                return res;
+            }
 
-
-    
-
-  </script>
+  $('#name1').on('click','button',function(){
+    initEchats1($(this).data('idx'))
+ })   */
+    </script>
 </body>
 </html>

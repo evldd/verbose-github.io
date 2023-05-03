@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../ECharts/echarts.js"></script>
+    <link rel="stylesheet" href="layui.css"> 
+    <script src="jquery.js"></script>
+    <style>
+      table{
+        margin-top: 10px;
+      }
+  td{
+    padding: 5px 10px;
+    text-align: center;
+     border: 1px gray solid; 
+  }
+  #addDel{
+    margin-top: 20px;
+  }
+  #hxList{
+    height: 440px;
+    width: 480px;
+    line-height: 35px;
+    margin: 20px auto;
+    background-color: rgb(235, 235, 235);
+    border-radius: 8px;
+    padding: 20px 20px;
+     text-align: center;
+     position: absolute;
+     left: 35%;
+     top:30%;
+     color: black;
+}
+#hxList span{
+    width: 200px;
+    height: 45px;
+    display: inline-block;
+    margin: 0 10px ;
+}
+#hxList input{
+    width: 200px;
+    height: 20px;
+    display: inline-block;
+    border: 1px lightgrey solid;
+    border-radius: 5px;
+    text-indent: 10px;
+}
+#hxList button{
+    margin: 0 20px;
+}
+#main{
+  margin: 20px;
+
+}
+#juzhong{
+  width: 1200px;
+  margin: auto;
+}
+.red{
+  background-color: brown;
+  color: white;
+}
+.purple{
+  background-color: purple;
+  color: white;
+}
+#btnX{
+  float: right;
+  width: 30px;
+  height: 30px;
+  border: none;
+  margin: 10px 50px 0 0;
+ 
+}
+#zhuzhuangtu{
+  width: 700px;
+}
+    </style>
+</head>
+<body>
+  <div id = 'juzhong'> 
+    <div id="addDel">
+         <button id="addItem" class="layui-btn">添加学生</button> 
+       <span style="font-weight: bolder; margin-left: 10px;">搜索：</span> 
+       <input type="text" id="seekipt" style="margin-right: 10px; height: 20px;">
+       <button id="seek" class="layui-btn">搜索</button> 
+       <button id="delItem" class="layui-btn">批量删除</button>
+    </div>
+      <table id="jsList" >
+            <thead>
+                <tr id="listhead">
+                    <td rowspan="2"> <input type="checkbox" id="selectAll"> </td>
+                     <td rowspan="2">姓名</td>
+                    <td id="date1">3.31（星期五）</td>
+                    <td colspan="3" id="date2">4.7（星期五）</td>
+                    <td id="date3">4.14（星期五）</td>
+                     <td colspan="3" id="date4">4.21（星期五）</td>
+                    <td rowspan="2">教学周期平均分</td>
+                    <td rowspan="2">操作</td>
+                </tr>
+                <tr>
+                    <td>机试成绩</td>
+                    <td>笔试成绩</td>
+                    <td>机试成绩</td>
+                    <td>平均分</td>
+                    <td>机试成绩</td>
+                    <td>笔试成绩</td>
+                    <td>机试成绩</td>
+                    <td>平均分</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table> 
+        <div id="zhuzhuangtu">
+          <button id="btnX">X</button>
+          <div id="main" style="width: 600px;height: 400px;"></div>
+        </div>       
+  </div> 
+  <div id="hxList">
+    <h2></h2>
+              <div >
+                 <span>姓名 ：</span><input type="text">  <br>
+                 <span>第一周成绩（机试） ：</span><input type="number">    <br>
+                 <span>第二周成绩（笔试） ：</span><input type="number">   
+                 <span>第二周成绩（机试） ：</span> <input type="number">    <br>
+                 <span>第三周成绩（机试） ：</span><input type="number">     <br>
+                 <span>第四周成绩（笔试） ：</span> <input type="number">  
+                 <span>第四周成绩（机试） ：</span><input type="number">   <br>
+                  <button id="clickAdd" class="layui-btn">确认</button>
+                  <button id="noclickAdd" class="layui-btn">取消</button>
+              </div>
+      </div>
+        <script>
+   let student = [
+    {
+      name:'郭栋彬',
+       result: [{
+                        jishi:85
+                                  },
+                {
+                  bishi:67,
+                  jishi:99
+                } ,
+                {
+                  jishi:70
+                } ,
+                {
+                  bishi:49,
+                  jishi:90
+                }                
+                                      ]
+                                      },              
+   {
+      name:'陈静',
+       result: [{
+                        jishi:60
+                                  },
+                {
+                  bishi:85,
+                  jishi:35
+                } ,
+                {
+                  jishi:65
+                } ,
+                {
+                  bishi:65,
+                  jishi:75
+                }                
+                                      ]
+                                      },
+                                      {
+      name:'李泽',
+       result: [{
+                        jishi:99
+                                  },
+                {
+                  bishi:38,
+                  jishi:100
+                } ,
+                {
+                  jishi:70
+                } ,
+                {
+                  bishi:50,
+                  jishi:92
+                }                
+                                      ]
+                                      },
+                                      {
+      name:'赵灿龙',
+       result: [{
+                        jishi:90
+                                  },
+                {
+                  bishi:51,
+                  jishi:70
+                } ,
+                {
+                  jishi:65
+                } ,
+                {
+                  bishi:29,
+                  jishi:50
+                }                
+                                      ]
+                                      },    
+                                      {
+      name:'刘佳佳',
+       result: [{
+                        jishi:75
+                                  },
+                {
+                  bishi:45,
+                  jishi:70
+                } ,
+                {
+                  jishi:70
+                } ,
+                {
+                  bishi:60,
+                  jishi:50
+                }                
+                                      ]
+                                      },  
+                                      {
+      name:'宋好影',
+       result: [{
+                        jishi:75
+                                  },
+                {
+                  bishi:62,
+                  jishi:70
+                } ,
+                {
+                  jishi:70
+                } ,
+                {
+                  bishi:58,
+                  jishi:65
+                }                
+                                      ]
+                                      },  
+                                      {
+      name:'齐博超',
+       result: [{
+                        jishi:95
+                                  },
+                {
+                  bishi:65,
+                  jishi:75
+                } ,
+                {
+                  jishi:75
+                } ,
+                {
+                  bishi:36,
+                  jishi:95
+                }                
+                                      ]
+                                      },
+                                      {
+      name:'董阳光',
+       result: [{
+                        jishi:80
+                                  },
+                {
+                  bishi:61,
+                  jishi:70
+                } ,
+                {
+                  jishi:73
+                } ,
+                {
+                  bishi:41,
+                  jishi:90
+                }                
+                                      ]
+                                      },                                                         
+               ]
+  let idx
+        
+   ;(function (){
+    if(localStorage.getItem('qwe') ){
+    student = JSON.parse(window.localStorage.getItem('qwe'))
+    }else{
+      localStorage.setItem('qwe', JSON.stringify(student)) 
+    }
+    showList()
+    $('#hxList').hide()
+    $('#zhuzhuangtu').hide()
+ })()
+
+      function showList(){
+                let html = ''
+     student.forEach((item,index)=>{
+      let pingjun = ((item.result[0].jishi/1+item.result[1].bishi/1+item.result[1].jishi/1+
+              item.result[2].jishi/1+item.result[3].bishi/1+item.result[3].jishi/1
+              )/6).toFixed(2)
+        html+=`
+        <tr>
+            <td><input type="checkbox" value='${index}'></td>
+            <td>${item.name} </td>
+            <td><span> ${item.result[0].jishi}</span></td>
+            <td><span>${item.result[1].bishi}</span></td>
+            <td><span>${item.result[1].jishi}</span></td>
+            <td><span>${(item.result[1].jishi/1+item.result[1].bishi/1)/2}</span></td>
+            <td><span>${item.result[2].jishi}</span></td>
+            <td><span>${item.result[3].bishi}</span></td>
+            <td><span> ${item.result[3].jishi}</span></td>
+            <td><span>${(item.result[3].jishi/1+item.result[3].bishi/1)/2}</span></td>
+            <td><span>${pingjun}</span></td>
+            <td><button class='del layui-btn' data-idx='${index}'>删除</button>
+                <button class='changItem layui-btn' data-idx='${index}'>编辑</button>
+                <button class='exam layui-btn' data-idx='${index}'>查看成绩图表</button>
+        </tr>
+         `
+       }) 
+      $('#jsList tbody').html(html) 
+         for(let i=0;i<=$('#jsList tbody span').length;i++){
+          if($('#jsList tbody span').eq(i).html()<50){
+            $('#jsList tbody span').eq(i).parent().addClass('red')  
+          }else if($('#jsList tbody span').eq(i).html()>90){
+            $('#jsList tbody span').eq(i).parent().addClass('purple')  
+          } 
+         }
+            }
+   //点击添加
+ $('#addItem').click(function(){
+   $('#hxList').show() 
+   $('#hxList').fadeOut(0)
+    $('#hxList').fadeIn(600)
+    $('#hxList h2').text('添加')
+ })     
+//查看图表
+$('#jsList tbody').on('click','.exam',function(){
+    showtubiao($(this).data('idx'))
+    $('#zhuzhuangtu').show() 
+   $('#zhuzhuangtu').fadeOut(0)
+    $('#zhuzhuangtu').fadeIn(600)
+ })
+ function showtubiao(stuidx){
+  var myChart, option;
+      initEchats(stuidx);
+            function initEchats(stuidx) {
+                myChart = echarts.init(document.getElementById("main"));
+                option = {
+                    title: {
+                        text: `${student[stuidx].name}的成绩`,
+                    },
+                    legend: {
+                        data: ["机试", "笔试"]
+                    },
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            type: "shadow",
+                        },
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: getXdata(),
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: getScore(stuidx),
+                };
+                myChart.setOption(option)
+            }
+ }
+ function getScore(stuidx) {
+  let jishiD = [
+    student[stuidx].result[0].jishi,student[stuidx].result[1].jishi,
+    student[stuidx].result[2].jishi,student[stuidx].result[3].jishi
+  ],
+      bishiD = [
+     0, student[stuidx].result[1].bishi,0,student[stuidx].result[3].bishi
+      ];      
+                return [
+                    {
+                        label: {
+                            show: true,
+                            position: "top",
+                        },
+                        data: jishiD,
+                        name: "机试",
+                        type: "bar",
+                    },
+                    {
+                        label: {
+                            show: true,
+                            position: "top",
+                        },
+                        data: bishiD,
+                        name: "笔试",
+                        type: "bar",
+                    },
+                ];
+ }
+ function getXdata() {
+         let  arr = [
+       $('#date1').html(), $('#date2').html(), $('#date3').html(), $('#date4').html()
+         ]      
+                return arr;
+      }
+//关闭图表
+$('#btnX').click(function(){
+  $('#zhuzhuangtu').hide()
+    $('#zhuzhuangtu').fadeIn(0)
+    $('#zhuzhuangtu').fadeOut(600)
+})
+//单个删除
+$('#jsList tbody').on('click','.del',function(){
+  if(confirm('确定删除吗？')){
+     student.splice($(this).data(idx),1)
+   localStorage.setItem('qwe', JSON.stringify(student)) 
+   showList()
+  }  
+ })
+//修改
+$('#jsList tbody').on('click','.changItem',function(){
+    $('#hxList').show() 
+   $('#hxList').fadeOut(0)
+    $('#hxList').fadeIn(600)
+    $('#hxList h2').text('修改')
+   $('#hxList input').eq(0).val(student[$(this).data('idx')].name)
+  $('#hxList input').eq(1).val(student[$(this).data('idx')].result[0].jishi)
+  $('#hxList input').eq(2).val(student[$(this).data('idx')].result[1].bishi)
+  $('#hxList input').eq(3).val(student[$(this).data('idx')].result[1].jishi)
+  $('#hxList input').eq(4).val(student[$(this).data('idx')].result[2].jishi) 
+  $('#hxList input').eq(5).val(student[$(this).data('idx')].result[3].bishi) 
+  $('#hxList input').eq(6).val(student[$(this).data('idx')].result[3].jishi)
+      idx = $(this).data('idx')
+ })
+ //确认添加  修改
+$('#clickAdd').click(function(){
+    $('#hxList').hide()
+    $('#hxList').fadeIn(0)
+    $('#hxList').fadeOut(600)
+ let item = $('#hxList input')
+ item.each((s,l)=>{
+   if(!l.value){
+    l.value=0
+   } 
+ })
+ if(item[0].value==0){
+   alert('姓名不能为空')
+ }else{
+         if($('#hxList h2').text()=='添加'){
+        let obj = {
+      name:item[0].value,
+       result: [{
+                        jishi:item[1].value
+                                  },
+                {
+                  bishi:item[2].value,
+                  jishi:item[3].value
+                } ,
+                {
+                  jishi:item[4].value
+                } ,
+                {
+                  bishi:item[5].value,
+                  jishi:item[6].value
+                }                
+                                    ]}    
+          student.push(obj) 
+      localStorage.setItem('qwe', JSON.stringify(student))                                  
+       }else if($('#hxList h2').text()=='修改'){
+        let obj = {
+      name:item[0].value,
+       result: [{
+                        jishi:item[1].value
+                                  },
+                {
+                  bishi:item[2].value,
+                  jishi:item[3].value
+                } ,
+                {
+                  jishi:item[4].value
+                } ,
+                {
+                  bishi:item[5].value,
+                  jishi:item[6].value
+                }                
+                                    ]}
+           student.splice(idx,1,obj)                       
+         localStorage.setItem('qwe', JSON.stringify(student)) 
+       }
+       showList() 
+ }
+  
+})
+//取消
+$('#noclickAdd').click(function(){
+    $('#hxList').fadeIn(0)
+    $('#hxList').fadeOut(1000)
+})
+//批量删除
+$('#delItem').click(function(){      
+          let arr = []
+           $('td input[type="checkbox"]').each((idx,item)=>{
+               if(item!=0&&$(item).prop('checked')){
+                    arr.push($(item).val())    
+               } 
+           })
+           if(!arr[0]){
+           alert('没有选中任何学生信息')
+           }else{
+           let del = confirm('确认删除选中的信息吗？')
+             if(del){   
+            deldata(arr)
+             } 
+           }
+          })
+         //删除
+         function deldata(arr){
+         for(let i=arr.length-1;i>=0;i--){
+            student.splice(arr[i],1) 
+         } 
+      localStorage.setItem('qwe', JSON.stringify(student))
+      showList()
+           $('#selectAll').prop('checked','')
+         }
+    //全选
+ $('#selectAll').click(function(){
+$('td input[type="checkbox"]').prop('checked',$('#selectAll').prop('checked'))
+ })      
+//搜索
+$('#seek').click(function(){
+    let id1 = $('#seekipt').val()
+    let arr = []
+    if(id1){
+   student.forEach((item)=>{
+     if(item.name.includes(id1)){
+        arr.push(item)
+     }     
+   })
+   student = arr 
+   showList()
+    }else{
+   student = JSON.parse(window.localStorage.getItem('qwe'))
+   showList()
+    } 
+})
+</script>
+</body>
+</html>
