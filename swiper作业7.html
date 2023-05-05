@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="swiper-bundle.min.css"
+    />
+
+    <!-- Demo styles -->
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 410px;
+        height: 250px;
+        position: absolute;
+        left: 10px;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        height: 250PX;
+        width: 410PX;
+        display: block;
+        object-fit: cover;
+      }
+      #lunbo{
+        border: 1px gray solid;
+        width: 520px;
+        height: 250px;
+        padding: 10px;
+        position: relative;
+        left: 10%;
+        top: 10%;
+      }
+      .swiper-pagination{
+        width: 92px;
+       height: 250px;
+      
+      }
+      .swiper-pagination-bullet img{
+    width: 92px;
+    height: 58px;
+    
+      }
+      .swiper-pagination-bullet {
+        width: 92px;
+        height: 58px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Swiper -->
+<div id="lunbo">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://www.jq22.com/demo/guanggao20151123/img/01.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="https://www.jq22.com/demo/guanggao20151123/img/02.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="https://www.jq22.com/demo/guanggao20151123/img/03.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="https://www.jq22.com/demo/guanggao20151123/img/04.jpg" alt=""></div>
+      </div>
+    </div>
+<div class="swiper-pagination">
+</div>
+</div>
+    <!-- Swiper JS -->
+    <script src="swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        direction: "vertical",
+        slidesPerView: 1,
+        spaceBetween: 30,
+        mousewheel: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        renderBullet: function (index, className) {
+        return '<span class="' + className + '"><image src="https://www.jq22.com/demo/guanggao20151123/img/0' + ( index  + 1 ) + '.jpg"></span>';
+    },
+        },
+      });
+      for(i=0;i<swiper.pagination.bullets.length;i++){
+        swiper.pagination.bullets[i].onmouseover=function(){
+    this.click();
+  };
+} 
+    </script>
+  </body>
+</html>
