@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 18px;
+        }
+        body{
+            background-color: rgb(245, 245, 245);
+        }
+        #boxhead{
+          
+            font-size: 18px;
+            text-align: right;
+            padding-bottom:80px ;
+            margin-right: 40px;
+        }  
+        a{
+            text-decoration:none;
+            color: lightgray;
+            margin: 5px;
+            height: 50px;
+            line-height: 70px;
+        }
+        a:hover{
+            color: white;
+        }
+        #boxtop{
+            width: 100%;
+            height: 650px;
+            background-color: rgb(63, 176, 106);
+            color: white;
+            position: relative;
+        }
+        #lsbb{
+            width: 440px;
+           margin: auto;
+           line-height: 30px;
+        }
+        #lsbb h1{
+            font-size: 35px;
+            text-align: center;
+            font-weight: 500;
+            line-height: 60px;
+        }
+        #lsbb span{
+            float: right;
+            color: lightgray;
+            font-size: 16px;
+        }
+        hr{
+            height: 1px;
+            background-color: rgba(89, 249, 118, 0.1);
+            margin: 40px 0 30px 0;
+            border: none;
+        }
+        #xzbb{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap:wrap; 
+            width: 720px;
+            height: 120px;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .xzd{
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            background-color: rgb(70, 193, 117,0.4);
+            display: flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .xzd:hover{
+            background-color: rgb(70, 193, 117,0.8);
+        }
+        #tsbb{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap:wrap; 
+            width: 660px;
+            height: 60px;
+            margin-left: -330px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            bottom: -10%;
+        }
+        .tsxzd{
+            width: 205px;
+            height: 56px;
+            border-radius: 8px;
+            background-color: rgb(70, 193, 117,0.4);
+            display: flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .tsxzd:hover{
+            background-color: rgb(70, 193, 117,0.8);
+        }
+        #huxian{
+            width: 100%;
+           height: 400px;
+           border-radius: 50%;
+           background-color: rgb(63, 176, 106);
+           position: absolute;
+           bottom:-200px;
+           z-index: -1;
+        }
+        #boxbtm{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+           margin: 0 120px 0 120px;
+        }
+        .item{
+            display: flex;
+            align-items:center;
+            justify-content:center;
+           width: 220px; 
+           height: 185px;
+           margin: 25PX;
+           background-color: white;
+           border-radius: 10px;
+        }
+        .fade-in-bottom {
+	-webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+ @-webkit-keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div id="boxtop">
+    <p id="boxhead"> <a href="#">wechat(繁体)</a>| <a href="#">wechat(EN)</a> </p>
+      <div id="lsbb" class="fade-in-bottom">
+        <h1>微信</h1>
+        <hr>
+        <p>微信键盘 0.9.1 for Mac 灰度版发布    <span>05-06 </span> </p>
+        <p>微信 8.0.37 for iOS 正式版发布
+          <span>04-27</span>   </p>
+          <p>微信 8.0.35 for Android 正式版发布
+          <span>04-20</span>  </p>
+          <a href="#">更多日志></a>
+      </div>  
+     <div id="xzbb" class="fade-in-bottom">
+        <div class="xzd"> Android  </div>
+        <div class="xzd">  ios  </div>
+        <div class="xzd">  Windows </div>
+        <div class="xzd"> macOS  </div>
+        <div class="xzd"> 文件传输助手网页版  </div>
+     </div>
+     <div id="tsbb" class="fade-in-bottom">
+        <div class="tsxzd"> 儿童手表版  </div>
+        <div class="tsxzd">  车载版  </div>
+        <div class="tsxzd">  微信键盘 </div>
+     </div>
+     <div id="huxian"></div>
+    </div>
+    <div style="margin-top: 240px;" class="fade-in-bottom">
+         <div id="boxbtm">
+        <div class="item">微信支付</div>
+        <div class="item">公众号</div>
+        <div class="item">小程序</div>
+        <div class="item">视频号助手</div>
+        <div class="item">小游戏</div>
+        <div class="item">小商店</div>
+        <div class="item">表情开放平台</div>
+        <div class="item">搜一搜开放平台</div>
+        <div class="item">红包封面开放平台</div>
+        <div class="item">对话开放平台</div>
+        <div class="item">开放社区</div>
+        <div class="item">服务市场</div>
+   </div>
+    </div>
+  <script>
+
+ 
+  
+  </script>
+</body>
+</html>
