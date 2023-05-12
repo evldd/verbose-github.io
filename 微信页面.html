@@ -22,6 +22,9 @@
             padding-bottom:80px ;
             margin-right: 40px;
         }  
+        p{
+            padding: 5px 15px;
+        }
         a{
             text-decoration:none;
             color: lightgray;
@@ -115,11 +118,15 @@
            bottom:-200px;
            z-index: -1;
         }
+        #sss{
+            margin-top: 240px;
+        }
         #boxbtm{
+            width: 900px;
             display: flex;
             flex-wrap: wrap;
             justify-content:center;
-           margin: 0 120px 0 120px;
+           margin: auto;
         }
         .item{
             display: flex;
@@ -160,7 +167,134 @@
     opacity: 1;
   }
 }
-
+@media screen and (max-width: 900px) {
+    body{
+        width: 100%;
+        padding: 0;
+    }
+    *{
+        font-size: 14px;
+        padding: 5px;
+    }
+    #boxhead{
+          font-size: 16px;
+          text-align: right;
+          padding-bottom:40px ;
+          margin-right: 20px;
+      }  
+      a{
+          text-decoration:none;
+          color: lightgray;
+          margin: 5px;
+          height: 40px;
+          line-height: 50px;
+      }
+      #boxtop{
+          width: 100%;
+          height: 600px;
+          background-color: rgb(63, 176, 106);
+          color: white;
+          position: relative;
+          padding: 0;
+      }
+      #lsbb{
+          width: 100%;
+         line-height: 30px;
+      }
+      #lsbb h1{
+          font-size: 25px;
+          text-align: center;
+          font-weight: 500;
+          line-height: 40px;
+      }
+      #lsbb span{
+          float: right;
+          color: lightgray;
+          font-size: 14px;
+      }
+      hr{
+          height: 1px;
+          background-color: rgba(89, 249, 118, 0.1);
+          margin: 30px 0 20px 0;
+          border: none;
+          padding: 0;
+      }
+      #sss{
+            margin-top: 120px;
+        }
+      #xzbb{
+           width: 100%;
+          display: flex;
+          flex-wrap:wrap; 
+          height: 90px;
+          margin: 25px 0;
+          text-align: center;
+      }
+      .xzd{
+          width: 85px;
+          height: 85px;
+          border-radius: 45px;
+          background-color: rgb(70, 193, 117,0.4);
+          display: flex;
+          align-items:center;
+          justify-content:center;
+          padding: 0;
+      }
+      .xzd:hover{
+          background-color: rgb(70, 193, 117,0.8);
+      }
+      #tsbb{
+          display: flex;
+          flex-wrap:wrap; 
+          width: 100%;
+          height: 40px;
+          text-align: center;
+          padding: 0;
+          margin-left: -50%;
+         position: absolute;
+         bottom: 0;
+      }
+      .tsxzd{
+          width: 25%;
+          height: 40px;
+          border-radius: 8px;
+          background-color: rgb(70, 193, 117,0.4);
+          display: flex;
+          align-items:center;
+          justify-content:center;
+          padding: 0;
+      }
+      .tsxzd:hover{
+          background-color: rgb(70, 193, 117,0.8);
+      }
+      #huxian{
+          width: 100%;
+         height: 200px;
+         border-radius: 50%;
+         background-color: rgb(63, 176, 106);
+         position: absolute;
+         bottom:-100px;
+         z-index: -1;
+         padding: 0;
+      }
+    #boxbtm{
+        overflow: hidden;
+        width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+        .item{
+            display: flex;
+            align-items:center;
+            justify-content:center;
+           width: 150px; 
+           height: 130px;
+           margin: 13PX;
+           background-color: white;
+           border-radius: 6px;
+        }
+}
     </style>
 </head>
 <body>
@@ -190,7 +324,7 @@
      </div>
      <div id="huxian"></div>
     </div>
-    <div style="margin-top: 240px;" class="fade-in-bottom">
+    <div id="sss"  class="fade-in-bottom">
          <div id="boxbtm">
         <div class="item">微信支付</div>
         <div class="item">公众号</div>

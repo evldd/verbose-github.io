@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+   #ait{
+    width: 500px;
+    height: 500px;
+background-color: aqua;  
+}
+   
+    </style>
+</head>
+<body>
+    <div id="ait"></div>
+    <script>
+     function fun1() {
+      return new Promise(resolve=>{
+        setTimeout(() => {
+            resolve($("#ait").animate({marginLeft:'500px' }, 3000));
+    }, 2000);
+      
+      });
+    }
+     function fun2() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            resolve($("#ait").animate({marginLeft:'0' }, 3000));
+    }, 5000);
+      });
+    }
+     function fun3() {
+      return new Promise(function (resolve, reject) {
+        resolve($("#ait").animate({ width: "0px",height:'0px' }, 2000));
+      });
+    }
+     function fun4() {
+      return new Promise(function (resolve, reject) {
+        resolve($("#ait").animate({ width: "500px" ,height:'500px' }, 2000));
+      });
+    }
+  async function asd(){
+    await  fun1();
+    await  fun2();
+    await  fun3();
+    await  fun4(); 
+  }
+     asd() 
+    
+    </script>
+     <script type="module">
+      import {index, index1 } from "./模块练习.js";
+      console.log(index1);
+      console.log(index);
+    </script> 
+</body>
+</html>

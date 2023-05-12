@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <style>
+        #btn{
+            width: 150px;
+            height: 60px;
+            margin:50px auto;
+            border-radius: 8px;
+            border: 2px black solid;
+            line-height: 60px;
+            text-align: center;
+        }
+        #game{
+            width: 500px;
+            height: 600px; 
+            display: flex ;
+            flex-wrap: wrap ;
+            padding: 20px 30px;
+            margin: auto;
+            border: 2px black solid;
+        }
+        .dong {
+            width:105px ;
+            height: 105px;
+            border-radius: 70px;
+            border: 2px black solid;
+            margin: 10px;
+            padding: 15px
+        }
+        .dong div{
+            width:100px ;
+            height: 100px;
+            border-radius: 60px;
+        }
+        .dong img{
+            width: 100px;
+            height: 100px;  
+            display: none;       
+        }
+        #df{
+            float: right;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="btn"> 开始游戏 </div>
+    <div id="game">
+         <p style="width: 100%;"> <span id="djs">倒计时：</span>    
+            <span id="df">得分：</span>  </p>
+         <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+           <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+        <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+           <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+        <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+           <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+        <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+           <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+        <div class="dong"> <div><img src="https://ts1.cn.mm.bing.net/th/id/R-C.9bd67a7eb02bae07ede58dd260f61ca8?rik=5Nlu7KdwzzIa2A&riu=http%3a%2f%2fwww.qqpao.com%2fuploads%2fallimg%2f140422%2f10-140422140327.jpg&ehk=9y%2fVJ5VMO%2fIIJfbWnwOVcJKB6lNPd4D1cb7g0xo4CE8%3d&risl=&pid=ImgRaw&r=0" alt=""></div> 
+        <div><img src="https://cdn.nlark.com/yuque/0/2022/png/29209509/1659663759395-24b8fa00-d35d-486c-b3b5-d445ed154732.png" alt=""></div>   </div>
+    </div>
+
+    <script>
+        let num = 120
+        let div = $('.dong')
+        console.log(div);
+        let a
+       $('#btn').click(function(){
+         a = setInterval(function(){
+           sss(a) 
+        } ,500)
+       })
+     function sss(){
+       num--
+      $('#djs').html('倒计时：'+num/2+'秒')
+      if(num<=0){
+         clearInterval (a)
+      }
+      
+     }
+    </script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="swiper-bundle.min.css"/>
+  <script src="jquery.js"></script>
+  <script src="echarts.js"></script>
+  <style> 
+  #collectivity{
+    width: 1200px;
+    background-color: #f0f8fd;
+    border-radius: 10px;
+    margin:20px auto;
+     padding: 20px;
+     display: flex;
+     flex-wrap: wrap;
+  }
+ .zhexian{
+    width: 550px;
+    height: 450px;
+    margin: auto;
+ }  
+ .daybtn{
+ 
+    border: none;
+    background-color: #5fa4d8;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 10px;
+ }
+ .zhexian .fenxi{
+    font-weight: bold;
+    font-size: 18px;
+ }
+ .mainn{
+    width: 550px;
+    height: 400px;
+   margin: 30px 0;
+   background-color: white;
+   border-radius: 10px;
+}
+#items{
+    display: flex;
+    width: 100%;
+    height: 200px;
+    flex-wrap: nowrap;
+}
+h3{
+    width: 100%;
+    font-weight: bold;
+    line-height: 40px;
+}
+#daiban{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#addshow{
+    width: 100%;
+    height: 500px;
+    display: flex;
+}
+.zxhead{
+    width: 100%;
+    display: flex;
+    justify-content:space-between
+}
+.items-1{
+    margin: 20px 15px;
+    width: 140px;
+    height: 110px;
+    background-color: white;
+    border-radius: 15px;
+    font-weight: 700;
+    padding: 20px;
+      
+}
+.danwei{
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: gray;
+    margin: 10px 0;
+}
+#yyshuju span{
+    font-weight: bold;
+    font-size: 18px;
+}
+#sj-xiangqing{
+    width: 1200px;
+    height: 600px;
+    background-color: white;
+    border-radius: 15px;
+     margin: 20px;
+     display: flex;
+     overflow: hidden;
+}
+#yyitems{
+    width: 520px;
+    height: 540px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.yyitems-1{
+    width: 180px;
+    height: 110px;
+    padding: 20px;
+    margin: 10px 15px;
+    border-radius: 10px;
+    background-color:  #f0f8fd;
+}
+.yynum{
+    display: block;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+.bijiao{
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: gray;
+    
+}
+#main2{
+    width: 600px;
+    height: 580px;
+   margin: 10px 0;
+   background-color: rgb(255, 255, 255,0);
+   border-radius: 15px;
+}
+@media screen and (max-width: 800px) {
+    #collectivity{
+    width: 750px;
+    background-color: #f0f8fd;
+    border-radius: 10px;
+    margin:10px auto;
+     padding: 10px;
+  }
+ .zhexian{
+    width: 350px;
+    height: 300px;
+    margin: auto;
+ }  
+ .daybtn{
+    border: none;
+    background-color: #5fa4d8;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 10px;
+ }
+ .zhexian .fenxi{
+    font-weight: bold;
+    font-size: 16px;
+ }
+ .mainn{
+    width: 350px;
+    height: 280px;
+   margin: 20px 0;
+   background-color: white;
+   border-radius: 10px;
+}
+#items{
+    display: flex;
+    width: 100%;
+    height: 280px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+h3{
+    width: 100%;
+    font-weight: bold;
+    line-height: 30px;
+}
+#daiban{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#addshow{
+    width: 750px;
+    height: 450px;
+    display: flex;
+}
+.zxhead{
+    width: 100%;
+    display: flex;
+    justify-content:space-between
+}
+.items-1{
+    margin: 15px 10px;
+    width: 110px;
+    height: 90px;
+    background-color: white;
+    border-radius: 10px;
+    font-weight: 700;
+    padding: 15px;
+      
+}
+.danwei{
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: gray;
+    margin: 10px 0;
+}
+#yyshuju span{
+    font-weight: bold;
+    font-size: 18px;
+}
+#sj-xiangqing{
+    width: 750px;
+    height: 400px;
+    background-color: white;
+    border-radius: 15px;
+     margin: 5px;
+     display: flex;
+     overflow: hidden;
+}
+#yyitems{
+    width: 350px;
+    height: 340px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.yyitems-1{
+    width: 120px;
+    height: 75px;
+    padding: 5px;
+    margin: 10px 5px;
+    border-radius: 10px;
+    background-color:  #f0f8fd;
+}
+.yynum{
+    display: block;
+    font-size: 18px;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+.bijiao{
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: gray;
+    
+}
+#main2{
+    width: 400px;
+    height: 390px;
+   margin: 10px 0;
+   background-color: rgb(255, 255, 255,0);
+   border-radius: 10px;
+}
+}
+  </style>
+</head>
+<body>
+
+<div id="collectivity">
+        <div id="daiban">
+             <h3>待办事项</h3>
+             <div id="items">
+                 <div class="items-1"> 待发货订单 
+                    <span class="danwei">单位（笔）</span> <br>
+                    <span class="number"></span>
+                </div>
+                <div class="items-1"> 待处理售后 <br>
+                    <span class="danwei">单位（笔）</span> <br>
+                    <span class="number"></span>
+                </div>
+                <div class="items-1"> 待付款订单 <br>
+                    <span class="danwei">单位（笔）</span> <br>
+                    <span class="number"></span>
+                </div>
+                <div class="items-1"> 待补货商品 <br>
+                    <span class="danwei">单位（个）</span> <br>
+                    <span class="number"></span>
+                </div>
+                <div class="items-1"> 待审核会员 <br>
+                    <span class="danwei">单位（个）</span> <br>
+                    <span class="number"></span>
+                </div>
+                <div class="items-1"> 待审核佣金 <br>
+                    <span class="danwei">单位（元）</span> <br>
+                    <span class="number"></span>
+                </div>
+             </div>
+        </div>
+   
+    <div id="addshow">
+          <div class="zhexian">
+             <div class="zxhead">
+                <div class="fenxi">新增会员</div>
+                    <div>
+                        <button id="jintian" class="daybtn">今天</button>
+                         <button id="zuotian" class="daybtn">昨天</button>
+                          <button id="jin7" class="daybtn">近7日</button>
+                          <button id="jin30" class="daybtn">近30日</button>
+                    </div>
+                
+              </div>
+        <div id="main" class="mainn"></div>
+        </div>
+         <div class="zhexian">
+            <div class="zxhead">
+               <div class="fenxi">新增订单</div>
+              <div>
+                  <button id="jintian1" class="daybtn">今天</button>
+                   <button id="zuotian1" class="daybtn">昨天</button>
+                    <button id="jin71" class="daybtn">近7日</button>
+                      <button id="jin301" class="daybtn">近30日</button>     
+              </div> 
+                             
+             </div>
+       <div id="main1" class="mainn"></div>
+       </div> 
+    </div>
+       
+    <div id="yunying">
+         <div class="zxhead" id="yyshuju">
+           <span>运营数据</span>  
+              <div>
+                  <input type="date" name="" id=""  class="daybtn">
+                  <input type="date" name="" id=""  class="daybtn">
+                <button id="jintian2" class="daybtn">今天</button>
+                <button id="zuotian2" class="daybtn">昨天</button>
+                 <button id="jin72" class="daybtn">近7日</button>
+                   <button id="jin302" class="daybtn">近30日</button>  
+              </div>
+         </div>
+          <div id="sj-xiangqing">
+            <div id="yyitems">
+                <div class="yyitems-1"> 成交金额（元） 
+                   <span class="yynum">796</span> <br>
+                   <span class="bijiao">较昨日</span>
+               </div>
+               <div class="yyitems-1"> 退款金额（元） 
+                <span class="yynum">0</span> <br>
+                <span class="bijiao">较昨日</span>
+            </div>
+            <div class="yyitems-1"> 支付订单笔数（笔） 
+                <span class="yynum">4</span> <br>
+                <span class="bijiao">较昨日</span>
+            </div>
+            <div class="yyitems-1"> 支付人数（人） 
+                <span class="yynum">4</span> <br>
+                <span class="bijiao">转化率</span>
+            </div>
+            <div class="yyitems-1"> 客单价（元）
+                <span class="yynum">199</span> <br>
+                <span class="bijiao">较昨日</span>
+            </div>
+            <div class="yyitems-1"> 笔单价 （元）
+                <span class="yynum">199</span> <br>
+                <span class="bijiao">较昨日</span>
+            </div>
+            </div>
+            <div id="main2" ></div>
+          </div>
+    </div>
+ </div>
+    <script>
+  let shuju = [
+    { xinzeng:{
+             shijian:['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00','21:00'],
+             pv:  [ 0,5, 15, 70,20, 70, 30, 5],      
+             uv:[ 0, 0, 2, 3, 2,5, 3, 1]
+             },
+      yyshuju:{
+        shijian:['00:00', '02:00', '04:00', '06:00','08:00', '10:00', '12:00', '14:00','16:00', '18:00', '20:00', '22:00'],
+        pv: [ 0, 0,0,100,500,300,600,300,100,300,0,0],
+      }                
+    },  
+
+    { xinzeng:{
+             shijian:['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00','21:00'],
+             pv: [ 0,2, 19,20, 60, 30,  0, 0],
+           uv:[ 0, 0, 1, 0, 2,3, 0, 1]
+             },
+      yyshuju:{
+        shijian:['00:00', '02:00', '04:00', '06:00','08:00', '10:00', '12:00', '14:00','16:00', '18:00', '20:00', '22:00'],
+        pv: [ 0, 0,0,0,300,200,700,300,500,600,200,0],
+      }                
+    },  
+        {
+              xinzeng:{
+                   shijian:['2023-04-30', '2023-05-01', '2023-05-02', '2023-05-03', '2023-05-04',  '2023-05-05', '2023-05-06'],
+                   pv: [ 280, 230,500, 650,480,300,250 ],
+                   uv:[ 2, 3, 5, 8, 6,7,3]
+                      },
+              yyshuju:{
+                shijian:['2023-04-30', '2023-05-01', '2023-05-02', '2023-05-03', '2023-05-04',  '2023-05-05', '2023-05-06'],
+                   pv: [ 380, 130,600, 550,280,700,50 ],
+              }        
+        },
+        {
+              xinzeng:{
+                   shijian:['2023-04-7', '2023-04-11', '2023-04-15', '2023-04-19', '2023-04-23', '2023-04-27', '2023-05-01','2023-05-05'],
+                   pv: [ 380, 530,200, 450280,300,250 ],
+                   uv:[ 2, 3, 5, 8, 6,7,3]
+                      },
+              yyshuju:{
+                shijian:['2023-04-7', '2023-04-11', '2023-04-15', '2023-04-19', '2023-04-23', '2023-04-27', '2023-05-01','2023-05-05'],
+                   pv: [ 180, 530,300, 250,680,200,150 ],
+              }        
+        },
+    ]
+  
+    ;(function (){
+        showzhexian(shuju[0].xinzeng)
+        showzhexian1(shuju[0].xinzeng)
+        showzhexian2(shuju[0].yyshuju)
+    })()
+
+    //第一个折线图
+    function showzhexian(shuju){
+    var chartDom = document.getElementById('main');
+   var myChart = echarts.init(chartDom);
+    var option;
+option = {   
+    legend: {
+                        data: ["新增会员"]
+                    },
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            type: "shadow",
+                        },
+                    },                   
+  xAxis: {
+    type: 'category',
+    data: shuju.shijian
+  },
+  yAxis: {
+    type:'value',
+   },
+  series: [
+    {
+        name:'新增会员',
+     data: shuju.pv,
+      type: 'line',
+      smooth: true,
+      symbol: "none", 
+    },
+  ]
+};
+ myChart.setOption(option);
+
+    }
+    //第一个折线图点击事件
+    $('#jintian').click(function(){
+   showzhexian(shuju[0].xinzeng)
+})
+$('#zuotian').click(function(){
+   showzhexian(shuju[1].xinzeng)
+})
+$('#jin7').click(function(){
+   showzhexian(shuju[2].xinzeng)
+})
+$('#jin30').click(function(){
+   showzhexian(shuju[3].xinzeng)
+})
+
+//第二个柱状图
+function showzhexian1(shuju){
+    var chartDom1 = document.getElementById('main1');
+   var myChart1 = echarts.init(chartDom1);
+    var option1;
+option1 = {   
+    legend: {
+                        data: ["新增订单"]
+                    },
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            type: "shadow",
+                        },
+                    },                   
+  xAxis: {
+    type: 'category',
+    data: shuju.shijian
+  },
+  yAxis: {
+    type:'value',
+   },
+  series: [
+    {
+        name:'新增订单',
+     data: shuju.uv,
+      type: 'bar',
+    },
+  ]
+};
+ myChart1.setOption(option1);
+    }
+
+//第二个柱状图点击事件
+$('#jintian1').click(function(){
+   showzhexian1(shuju[0].xinzeng)
+})
+$('#zuotian1').click(function(){
+   showzhexian1(shuju[1].xinzeng)
+})
+$('#jin71').click(function(){
+   showzhexian1(shuju[2].xinzeng)
+})
+$('#jin301').click(function(){
+   showzhexian1(shuju[3].xinzeng)
+})
+
+
+//第三个折现图
+function showzhexian2(shuju){
+    var chartDom2 = document.getElementById('main2');
+   var myChart2 = echarts.init(chartDom2);
+    var option2;
+option2 = {   
+    legend: {
+                        data: ["新增会员"]
+                    },
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            type: "shadow",
+                        },
+                    },                   
+  xAxis: {
+    type: 'category',
+    data: shuju.shijian
+  },
+  yAxis: {
+    type:'value',
+   },
+  series: [
+    {
+        name:'新增会员',
+     data: shuju.pv,
+      type: 'line',
+      smooth: true,
+      symbol: "none", 
+    },
+  ]
+};
+ myChart2.setOption(option2);
+    }
+
+//第三个折现图点击事件
+$('#jintian2').click(function(){
+   showzhexian2(shuju[0].yyshuju)
+})
+$('#zuotian2').click(function(){
+   showzhexian2(shuju[1].yyshuju)
+})
+$('#jin72').click(function(){
+   showzhexian2(shuju[2].yyshuju)
+})
+$('#jin302').click(function(){
+   showzhexian2(shuju[3].yyshuju)
+})
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+     header{
+        width: 100%;
+        height: 110px;
+        position: fixed;
+        top: 0;
+        font-size: 19px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items:center;
+            justify-content:center;
+            background-color: white;
+     }
+     header img{
+        width: 198px;
+       height: 74px;
+       float: left;
+       margin-right: 40px;
+     }
+     ul{
+        display: flex;
+        flex-wrap: nowrap;
+     }
+     li{
+        width: 110px;
+        height: 90px;
+        display: flex;
+        list-style: none;
+        float: left;
+        padding-bottom: 15px;
+        text-align: center;
+        box-sizing: border-box;
+        align-items:center;
+            justify-content:center;
+     }
+     li:hover{
+        color: red;
+        border-bottom: 5px red solid;
+     }
+     #rexian{
+        width: 230px;
+        float: left;
+        margin: -20px 0 0 30px ;
+        background-color: red;
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        line-height: 35px;
+        font-weight: 700;
+     }
+     #tupian{
+        margin-top: 100px;
+        width: 100%;
+        height: 500px;
+        background: url(https://w.wallhaven.cc/full/o5/wallhaven-o51j87.png) no-repeat;
+        background-size: cover;
+     }
+     #tupian1{
+        width: 92%;
+        height: 600px;
+        background: url(https://www.mxbc.com/assets/image/product/%E4%BA%A7%E5%93%81%E7%94%BB.svg) no-repeat;
+        background-size: cover;
+     }
+     p{
+        font-size: 50px;
+        font-weight: 900;
+        color: red;
+        text-align: center;
+        margin-top: 80px;
+        margin-bottom: 40px;
+     }
+     #youxia{
+      width: 105px;
+      height: 130px;
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: url(https://www.mxbc.com/assets/img/icon-14.svg) no-repeat;
+        background-size: cover;
+     }
+     .footer{
+      display: none;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      background-color: white;
+     }
+    .footer>div{
+      width: 31%;
+      height: 100%;
+      padding: 0 10px;
+      float: left;
+      text-align: center;
+     }
+     .footer   .footer-1 div{
+      margin: auto;
+      width: 45px;
+      height: 40px;
+      overflow: hidden;
+      background: url(https://ts1.cn.mm.bing.net/th/id/R-C.8f674fe5bfc568895ef030961bcc98f8?rik=hlS9AVKcj29gqA&riu=http%3a%2f%2fbpic.588ku.com%2foriginal_pic%2f19%2f04%2f17%2f4239ae63c8d5ac8512ff415e3ecba1b2.jpg&ehk=ZFRKIpKgI24Fjn51b%2bjfAAg0ZAZfBKoIOiXZ%2fpawgxE%3d&risl=&pid=ImgRaw&r=0)  no-repeat;
+       background-size: 45px 40px;
+     }
+     .footer   .footer-2 div{
+      margin: auto;
+      width: 45px;
+      height: 40px;
+      overflow: hidden;
+      background: url(https://img.tukuppt.com/png_preview/00/11/07/tXuWKjTdyB.jpg!/fw/780)  no-repeat;
+       background-size: 45px 40px;
+     }
+     .footer   .footer-3 div{
+      margin: auto;
+      width: 45px;
+      height: 40px;
+      overflow: hidden;
+      background: url(https://ts1.cn.mm.bing.net/th/id/R-C.16efaec1eb911e90e4879da94335b567?rik=Mh1cwnM9uQ9EFw&riu=http%3a%2f%2fbpic.588ku.com%2felement_pic%2f01%2f32%2f22%2f34573b6b0bdcb0c.jpg&ehk=YWpgyYFfzkuyn%2fizw9WiCmfiPshhHgxapQkGxbH3xq0%3d&risl=&pid=ImgRaw&r=0)  no-repeat;
+       background-size: 45px 40px;
+     }
+     #youxia div{
+      width: 70px;
+      height: 70px;
+      display: none;
+     }
+     #youxia span{
+       display: none;
+     }
+     .youxia-1 {
+      background: url(https://img.tukuppt.com/png_preview/00/07/44/5ApWvhsSQ4.jpg!/fw/780)  no-repeat;
+       background-size: 70px 70px;
+     }
+     .youxia-2 {
+      background: url(https://img.tukuppt.com/png_preview/00/12/83/bcEBxoPvzE.jpg!/fw/780)  no-repeat;
+       background-size: 70px 70px;
+     }
+     @media screen and (max-width: 1300px) {
+        header{
+        height: 80px;
+        font-size: 16px;
+     }
+     li{
+        width: 80px;
+        height: 70px; 
+        margin-top: 10px;
+     }
+     header img{
+        width: 120px;
+        height: 54px;
+     }
+     #rexian{
+        width: 160px;
+        float: left;
+        line-height: 25px;
+        margin-top: 10px;
+     }
+     #tupian{
+        margin-top: 80px;
+     }
+     }
+     @media screen and (max-width: 1000px) {
+      .footer{
+         display: flex;
+         position: fixed;
+         bottom: 0;
+         font-size: 20px;
+      }
+      ul{
+         display: none;
+      }
+        header{
+        height: 80px;
+        display: block;
+     }
+     header img{
+        width: 198px;
+       height: 74px;
+       float: left;
+       margin:0  20px;
+     }
+     #rexian{
+        margin: 10px 0 0 30px;
+     }
+     #youxia{
+      width: 80px;
+      height: 180px;
+      background-color: rgba(212, 102, 82, );
+      border-radius: 10px 0 0 10px;
+      position: fixed;
+      bottom: 100px;
+      right: 15px;
+      background: url();
+      text-align: center;
+     }
+     #youxia div{
+      display: block;
+     }
+     #youxia span{
+      display: block;
+     }
+     }
+    </style>
+</head>
+<body>
+    <header>
+       <img src="https://www.mxbc.com/assets/img/%E8%9C%9C%E9%9B%AAlogo.svg" alt="">
+       <ul>
+          <li>品牌介绍</li>
+          <li>加盟咨询</li>
+          <li>产品介绍</li>
+          <li>门店展示</li>
+          <li>新闻中心</li>
+          <li>企业责任</li>
+          <li>人才招聘</li>
+          <li>中文/EN</li>
+       </ul>
+       <div id="rexian">
+        400-060-8888   <br>
+            官方唯一加盟热线
+       </div>
+    </header>
+    <div id="tupian"> </div>
+    <div> <p>一杯产品的诞生过程</p> </div>
+    <div id="tupian1"> </div>
+
+
+<div id="youxia">
+   <div class="youxia-1">
+   </div><span>客服</span>
+   <div class="youxia-2">  
+   </div> <span>热线</span>
+</div>
+    <div class="footer">
+        <div class="footer-1">
+            <div></div>
+            <span>产品介绍</span>
+        </div>
+        <div class="footer-2">
+            <div></div>
+            <span>门店查询</span>
+        </div>
+        <div class="footer-3">
+           <div></div>
+            <span>加盟咨询</span>
+        </div>
+    </div>
+</body>
+</html>
