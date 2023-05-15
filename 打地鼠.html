@@ -75,16 +75,17 @@
     </div>
 
     <script>
-        let num = 120
+      
         let div = $('.dong')
         console.log(div);
-        let a
+         let a
        $('#btn').click(function(){
+          let num = 120
          a = setInterval(function(){
            sss(a) 
         } ,500)
        })
-     function sss(){
+     function sss(a){
        num--
       $('#djs').html('倒计时：'+num/2+'秒')
       if(num<=0){
