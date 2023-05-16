@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+       background-color:rgb(153, 136, 114) ;
+       color:rgb(215, 215, 215);
+       padding: 20px;
+        }
+        header p{
+            float: right;
+            margin-top: -25px;
+        }
+        a{
+         text-decoration: none;
+         color: rgb(215, 215, 215);
+         margin: 0 10px;
+        }
+        #item-body{
+            width: 90%;
+            display: flex;
+            margin:50PX auto 0;
+            justify-content: space-around;
+        }
+ .itemsong{
+    display: flex;
+ }
+ input{
+    width: 20px;
+    height: 20px;
+ }
+ #bofang{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    padding: 20px ;
+    background-color: rgb(145, 130, 109) ;
+ }
+ #bofang div{
+    display: inline-block;
+    margin: 0 10px;
+ }
+ button{
+    background-color: rgb(173, 173, 173,0);
+            color: lightgray;
+            border: 1px rgb(215, 215, 215) solid;
+            padding: 8px 30px;
+            margin: 5px;
+ }
+ #bofang button{
+    font-size: 20px;
+    color: white;
+    float: left;
+    border: none;
+ }
+ #item-song{
+    width: 60%;
+ }
+ .itemsong{
+    width: 100%;
+   display: flex;
+   justify-content: space-between;
+   margin: 20px 0;
+ }
+ #item-song-btn{
+    width: 100%;
+    margin: 15px 0;
+ }
+ .an-btn{
+    display: inline-block;
+    background-color: rgb(173, 173, 173,0);
+            color: lightgray;
+            border: 1px rgb(215, 215, 215) solid;
+            padding: 8px 30px;
+            margin: 5px;
+ }
+ .an-btn div{
+    display: inline-block;
+ }
+ #item-photo{
+    width: 340px;
+    margin-left: 150px;
+    text-align: center;
+    line-height: 30px;
+ }
+ #item-photo p{
+    margin-top: 20px;
+ }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>QQ音乐</h2>
+        <p> <a href="#">登录</a>  <a href="#">设置</a> </p>
+    </header>
+     <div id="item-body">
+          <div id="item-song">
+                 <div id="item-song-btn">
+                     <div class="an-btn"> 
+                      <div style="width: 16px;height: 16px; background: url(./icon图/收\ 藏-产品详情.png);"></div>
+                       收藏
+                      </div>
+                     <div class="an-btn">
+                        <div style="width: 16px;height: 16px; background: url(./icon图/添加.png);"></div>
+                        添加到</div>
+                     <div class="an-btn">
+                        <div style="width: 16px;height: 16px; background: url(./icon图/下载.png);"></div>
+                        下载</div>
+                     <div class="an-btn">
+                        <div style="width: 16px;height: 16px; background: url(./icon图/删除.png);"></div>
+                        删除</div>
+                     <div class="an-btn">
+                        <div style="width: 16px;height: 16px; background: url(./icon图/清空.png);"></div>
+                        清空列表</div>
+                 </div>
+             <div id="item-song-s" class="itemsong">
+                <div><input type="checkbox" id="selectAll"> </div>
+                <div>歌曲</div>
+                <div>歌手</div>
+                <div>时长</div>
+             </div>  
+ 
+                 <div  class="itemsong">
+                   <div><input type="checkbox"> </div>
+                   <div>1 我会等</div>
+                   <div>承恒</div>
+                   <div class="songtime">3：15</div>
+                 </div>  
+                 <div  class="itemsong">
+                    <div><input type="checkbox"> </div>
+                    <div>2 孤雏</div>
+                    <div>AGA</div>
+                    <div class="songtime">4：53</div>
+                 </div>  
+                 <div  class="itemsong">
+                    <div><input type="checkbox"> </div>
+                    <div>3 字字句句（live）</div>
+                    <div>张碧晨</div>
+                    <div class="songtime">4：52</div>
+                 </div>  
+                 <div  class="itemsong">
+                    <div><input type="checkbox"> </div>
+                    <div>4 可能</div>
+                    <div>程响</div>
+                    <div class="songtime">3：37</div>
+                 </div>  
+          </div>
+          <div id="item-photo">
+               <div>
+                  <img src="https://y.qq.com/music/photo_new/T002R300x300M000000MnAzZ42tag9_2.jpg?max_age=2592000" width="186" height="186">
+               </div>
+               <div>
+                 <p>歌曲名：字字句句（live）  <br>
+                  歌手：张碧晨/王赫野  <br>
+                  专辑：天赐的声音第四季 第三期
+                 </p>
+                 <p>
+                    字字句句（live）-张碧晨/王赫野  <br>
+                    词：酒龄三一  <br>
+                    曲：九零三一  <br>
+                    改编词： 张碧晨  <br>
+                    改编曲：张碧晨<br>
+                 </p>
+               </div>
+          </div>  
+     </div>
+
+     <div id="bofang">
+         <button> « </button>
+         <button>▶</button>
+         <button>»</button>
+         <div>
+            <audio controls>
+                <source src=".\歌\泡沫.mp3" type="audio/mpeg">
+                <source src=".\歌\光年之外.mp3" type="audio/mpeg">
+                <source src=".\歌\惊鸿一面.mp3" type="audio/mpeg">
+                <source src=".\歌\杀死那个石家庄人.mp3" type="audio/mpeg">
+            </audio>
+         </div>
+         <div style="width: 16px;height: 16px; background: url(./icon图/循环.png);"></div>
+         <div style="width: 16px;height: 16px; background: url(./icon图/聚收藏.png);"></div>
+         <div style="width: 16px;height: 16px; background: url(./icon图/下载\ \(1\).png);"></div>
+         <div style="width: 16px;height: 16px; background: url(./icon图/评论小.png);"></div>
+     </div>
+     <script>
+
+
+$('#selectAll').click(function(){
+$('#item-song input[type="checkbox"]').prop('checked',$('#selectAll').prop('checked'))
+ })
+     </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="510" height="510"></canvas>
+    <canvas id="canvas1" width="510" height="510"></canvas>
+    <canvas id="canvas2" width="510" height="510"></canvas>
+    <script>
+    //太极图
+        const el = document.querySelector('canvas')
+    const ctx = el.getContext('2d')
+   
+    ctx.beginPath()
+    ctx.strokeStyle = 'black'
+    ctx.lineWidth = 10
+    ctx.arc(255, 255, 245, 0, 2 * Math.PI)
+    ctx.stroke()
+
+    ctx.beginPath()
+ctx.fillStyle = 'black'
+ctx.arc(255, 255, 245,Math.PI*270/180,Math.PI*90/180,true)
+ctx.fill()
+
+    ctx.beginPath()
+ctx.fillStyle = 'white'
+ctx.lineWidth = 20
+ctx.arc(255, 135.5, 120, 0, 2 * Math.PI)
+ctx.fill()
+
+ctx.beginPath()
+ctx.fillStyle = 'black'
+ctx.lineWidth = 20
+ctx.arc(255, 137.5, 30, 0, 2 * Math.PI)
+ctx.fill()
+
+ctx.beginPath()
+ctx.fillStyle = 'black'
+ctx.arc(255, 375.5, 120, 0, 2 * Math.PI)
+ctx.fill()
+
+ctx.beginPath()
+ctx.fillStyle = 'white'
+ctx.arc(255, 375.5, 30, 0, 2 * Math.PI)
+ctx.fill() 
+
+//五角星
+const el1 = document.querySelector('#canvas1')
+const ctx1 = el1.getContext('2d')
+            //开始画线
+            ctx1.beginPath()
+            //移动起始点
+            ctx1.moveTo(10, 205)
+            //下一个节点
+            ctx1.lineTo(500, 205)
+            //下一个节点
+            ctx1.lineTo(95, 500)
+             //下一个节点
+             ctx1.lineTo(255, 30)
+              //下一个节点
+            ctx1.lineTo(415, 500)
+             //下一个节点
+             ctx1.lineTo(10, 205)
+            //闭合节点
+            ctx1.closePath()
+            //线宽
+            ctx1.lineWidth = 10
+            //线颜色
+            ctx1.strokeStyle = 'black'
+            //画线
+            ctx1.stroke()
+
+//太极八卦
+ const el2 = document.querySelector('#canvas2')
+    const ctx2 = el2.getContext('2d')
+   
+    ctx2.beginPath()
+    ctx2.strokeStyle = 'black'
+    ctx2.lineWidth = 5
+    ctx2.arc(255, 255, 130, 0, 2 * Math.PI)
+    ctx2.stroke()
+
+    ctx2.beginPath()
+ctx2.fillStyle = 'black'
+ctx2.arc(255,255,130,Math.PI*90/180,Math.PI*270/180,true)
+ctx2.fill()
+
+    ctx2.beginPath()
+ctx2.fillStyle = 'white'
+ctx2.arc(255, 193, 65, 0, 2 * Math.PI)
+ctx2.fill()
+
+ctx2.beginPath()
+ctx2.fillStyle = 'black'
+ctx2.arc(255, 193, 20, 0, 2 * Math.PI)
+ctx2.fill()
+
+ctx2.beginPath()
+ctx2.fillStyle = 'black'
+ctx2.arc(255, 323, 65, 0, 2 * Math.PI)
+ctx2.fill()
+
+ctx2.beginPath()
+ctx2.fillStyle = 'white'
+ctx2.arc(255, 323, 20, 0, 2 * Math.PI)
+ctx2.fill() 
+
+
+  ctx2.fillStyle = 'black'
+  ctx2.fillRect(215, 20, 80, 14);
+  ctx2.fillRect(215, 45, 80, 14);
+  ctx2.fillRect(215, 70, 80, 14);
+
+    ctx2.rotate(45*Math.PI/180);
+  ctx2.fillRect(270, 40, 80, 14);
+
+    </script>
+</body>
+</html>
