@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <style>
+  body{
+    background-color: black;
+    color: white;
+  }
+  body>div{
+    display: flex;
+    width: 800px;
+    margin:30px auto;
+  }
+  h2{
+    width: 100%;
+    text-align: center;
+  }
+    </style>
+</head>
+<body>
+  <div>
+    <h2>留言板</h2>
+  </div>
+   <script>
+    
+      function getlist(){
+    $.ajax({
+        async :false,
+         type: "get",
+    url:"http://127.0.0.1:3000/users",
+     dataType: "json",
+     headers:{
+     Authorization:`Bearer ${token}`,
+     },
+  success:function(data){
+        console.log(data);
+     }
+    })
+}
+getlist()
+   </script>
+</body>
+</html>

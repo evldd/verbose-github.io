@@ -8,16 +8,73 @@
     <script src="jquery.js"></script>
 </head>
 <body>
+<div id="box">
+    <input type="text" id="username">用户名   <br>
+    <input type="text" id="pwd">密码   <br>
+    <button id="login">登录</button> 
+</div>
+    <button id="getxhz">获取</button>
+    <button id="addxhz">增加</button>
+    <button id="delxhz">删除</button>
+    <button id="changexhz">更新</button>
     <script>
-    (function(){
- 
-})()
+        let token="";
+//点击登录
+$('#login').click(function(){
+    let data = {
+        username: $("#username").val(),
+        password: $("#pwd").val(),
+    };
+   $.ajax({
+
+    type: "post",
+    url:"http://127.0.0.1:3000/login",
+    dataType:"json",
+    data: data,
+     success: function(response){
+        token = response.token
+     },
+   }) 
+})
+  //点击增加      
+$('#addxhz').click(function(){
+    addlist()
+})
+//点击删除
+$('#delxhz').click(function(){
+    dellist()
+})
+//点击更新
+$('#changexhz').click(function(){
+    changelist()
+})
+//点击获取
+$('#getxhz').click(function(){
+    getlist()
+})
+//获取黑子列表
+function getlist(){
+    $.ajax({
+        async :false,
+         type: "get",
+    url:"http://127.0.0.1:3000/users",
+     dataType: "json",
+     headers:{
+     Authorization:`Bearer ${token}`,
+     },
+  success:function(data){
+        console.log(data);
+     }
+    })
+}
+
+//增加小黑子
 function addlist(){
     $.ajax({
     url:"http://127.0.0.1:3000/users/add",
     type: "post",
     data:{
-    name:"李四",
+    name:"律诗含",
     age:16
      },
      dataType: "json",
@@ -26,6 +83,44 @@ function addlist(){
      }
     })
 }
+//删除小黑子
+function dellist(){
+    $.ajax({
+    url:"http://127.0.0.1:3000/users/del?id=4",
+    type: "delete",
+     dataType: "json",
+  success:function(data){
+        console.log(data);
+     }
+    })
+}
+//更新小黑子
+function changelist(){
+    $.ajax({
+    url:"http://127.0.0.1:3000/users/change?id=4",
+    type: "put",
+    data:{
+    name:"gwerger",
+    age:16
+     },
+     dataType: "json",
+  success:function(data){
+        console.log(data);
+     }
+    })
+}
+//id查找小黑子
+/* (function(){
+    $.ajax({
+         type: "get",
+    url:"http://127.0.0.1:3000/users/info?id=2",
+     dataType: "json",
+  success:function(data){
+        console.log(data);
+     }
+    })
+})() */
+
 </script>
 </body>
 </html>
