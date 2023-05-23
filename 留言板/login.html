@@ -82,7 +82,7 @@
         </fieldset>
     </form>
     <script>
-         $('#yzm').click(function(){
+      /*    $('#yzm').click(function(){
     event.preventDefault()
     $(this).prop('disabled',true)
     $.ajax({
@@ -97,7 +97,7 @@
                 }
             }
         });
-   })
+   }) */
          $('form').submit(function(){
     event.preventDefault()
   let value = $('form input')
@@ -108,17 +108,12 @@
        }
     }      
      $.ajax({
-        url:"http://47.94.4.201/index.php/index/index/login", 
+        url:"http://localhost:3000/users/login", 
         type:"post",                                           
         dataType:"json",                                      
-        data:{vercode:value[2].value,name:value[0].value,pwd:value[1].value},        
+        data:{username:value[0].value,password:value[1].value},        
         success:function(data){
-  		    if(data.code==0){
-        window.location.replace('郭栋彬jq-Ajax跳转.html') 
-            }else{
-            alert(data.msg)
-            console.log(data);
-            }		         		
+  		   console.log(data);         		
         }
     }); 
    })

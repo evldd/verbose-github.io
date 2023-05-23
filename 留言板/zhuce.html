@@ -77,10 +77,13 @@
         <fieldset>
             <h2>注册账号</h2>
             <div>
-             <span>用户名：</span>  <input type="text">
+             <span>姓名：</span>  <input type="text">
             </div>
             <div>
                 <span>密码：</span>  <input type="password">
+             </div>
+             <div>
+                <span>昵称：</span>  <input type="text">
              </div>
              <div>
                 <span>性别：</span>  <input type="text">
@@ -94,11 +97,11 @@
     </form> 
     
     <script>
-   $('#yzm').click(function(){
+/*    $('#sub').click(function(){
     event.preventDefault()
     $.ajax({
-            type:"GET",
-            url:" http://47.94.4.201/index.php/index/index/getcode",
+            type:"post",
+            url:" http://127.0.0.1:3000/users",
             dataType:"json",
             success:function(data){
                 if(data.code==0){
@@ -111,29 +114,32 @@
                 console.log("Error: "+jqXHR.status);
             }
         });
-   })
+   }) */
    $('form').submit(function(){
     event.preventDefault()
   let value = $('form input')   
      $.ajax({
-        url:"http://47.94.4.201/index.php/index/index/register", 
+        url:"http://127.0.0.1:3000/users", 
         type:"post",                                           
         dataType:"json",                                      
-        data:{name:value[0].value,pwd:value[1].value,emails:value[2].value},        
+        data:{username:value[0].value,
+            password:value[1].value,
+            nickname:value[2].value  ,
+            sex:value[3].value  },
         success:function(data){
-  		    if(data.msg=='添加成功'){
-            window.location.replace('郭栋彬jq-Ajax登录.html') 
-            }else{
-            alert(data.msg)
-            }		         		
+  		  if(data.code==11000){
+            console.log({code:data.code,msg:"不能重复注册"});
+          }else{
+            location.replace('login.html')
+          }     		
         }
     }); 
    })
    $('#login').click(function(){
-    window.location.replace('login.html') 
+    location.replace('login.html') 
    })
    $('#liuyan').click(function(){
-    window.location.replace('lyb.html') 
+    location.replace('lyb.html') 
    })
     </script>
 </body>
